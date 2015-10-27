@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package de.tschumacher.picturecloudservice.cloud;
+package de.tschumacher.cloudpictureservice.cloud;
 
 import static org.junit.Assert.assertEquals;
 
@@ -29,8 +29,10 @@ import org.mockito.Mockito;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import de.tschumacher.picturecloudservice.cloud.s3.AmazonS3Service;
-import de.tschumacher.picturecloudservice.configuration.PictureServiceConfig;
+import de.tschumacher.cloudpictureservice.cloud.CloudUploadService;
+import de.tschumacher.cloudpictureservice.cloud.DefaultCloudUploadService;
+import de.tschumacher.cloudpictureservice.cloud.s3.AmazonS3Service;
+import de.tschumacher.cloudpictureservice.configuration.PictureServiceConfig;
 
 public class CloudUploadServiceTest {
 	private CloudUploadService service = null;

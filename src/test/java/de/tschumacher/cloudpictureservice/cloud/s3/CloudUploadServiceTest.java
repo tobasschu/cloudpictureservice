@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package de.tschumacher.picturecloudservice.cloud.s3;
+package de.tschumacher.cloudpictureservice.cloud.s3;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -40,6 +40,9 @@ import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
+
+import de.tschumacher.cloudpictureservice.cloud.s3.AmazonS3Service;
+import de.tschumacher.cloudpictureservice.cloud.s3.DefaultAmazonS3Service;
 
 public class CloudUploadServiceTest {
 	private AmazonS3Service service = null;

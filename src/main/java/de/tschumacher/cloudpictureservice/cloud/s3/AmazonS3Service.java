@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package de.tschumacher.picturecloudservice.cloud.s3;
+package de.tschumacher.cloudpictureservice.cloud.s3;
 
 import java.io.File;
 

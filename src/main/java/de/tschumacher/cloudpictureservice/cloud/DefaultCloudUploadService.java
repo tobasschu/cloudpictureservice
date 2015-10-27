@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package de.tschumacher.picturecloudservice.cloud;
+package de.tschumacher.cloudpictureservice.cloud;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,8 +22,8 @@ import net.coobird.thumbnailator.Thumbnails;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import de.tschumacher.picturecloudservice.cloud.s3.AmazonS3Service;
-import de.tschumacher.picturecloudservice.configuration.PictureServiceConfig;
+import de.tschumacher.cloudpictureservice.cloud.s3.AmazonS3Service;
+import de.tschumacher.cloudpictureservice.configuration.PictureServiceConfig;
 import de.tschumacher.utils.FilePathUtils;
 import de.tschumacher.utils.FileUtils;
 
