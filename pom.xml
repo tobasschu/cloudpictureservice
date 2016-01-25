@@ -18,9 +18,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk</artifactId>
-			<version>1.10.21</version>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>1.10.49</version>
 		</dependency>
+
 		<dependency>
 			<groupId>net.coobird</groupId>
 			<artifactId>thumbnailator</artifactId>
