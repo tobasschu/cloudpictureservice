@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 
 import net.coobird.thumbnailator.Thumbnails.Builder;
-import de.tschumacher.cloudpictureservice.cloud.s3.AmazonS3Service;
+import de.tschumacher.bucketservice.AmazonS3Service;
 import de.tschumacher.cloudpictureservice.picture.CloudPicture;
 import de.tschumacher.cloudpictureservice.picture.DeleteCloudPicture;
 import de.tschumacher.cloudpictureservice.picture.models.PictureElement;

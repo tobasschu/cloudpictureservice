@@ -24,7 +24,7 @@ import org.junit.Test;
 import org.mockito.Matchers;
 import org.mockito.Mockito;
 
-import de.tschumacher.cloudpictureservice.cloud.s3.AmazonS3Service;
+import de.tschumacher.bucketservice.AmazonS3Service;
 import de.tschumacher.cloudpictureservice.picture.CloudPicture;
 import de.tschumacher.cloudpictureservice.picture.models.PictureElement;
 import de.tschumacher.cloudpictureservice.picture.models.Size;
