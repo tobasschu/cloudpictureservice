@@ -52,14 +52,14 @@ public class DefaultCloudUploadService implements CloudUploadService {
         new File(IdentifierUtils.createUniqueIdentifier(sourceFile.getName())
             + FilePathUtils.getFileExtension(sourceFile.getName()));
     thumbBuilder.toFile(thumbFile);
-    this.s3Service.uploadFile(thumbFile, element.getUploadPath());
+    this.s3Service.uploadPublicFile(thumbFile, element.getUploadPath());
     thumbFile.delete();
   }
 
   @Override
   public void deletePicture(DeleteCloudPicture deleteCloudPicture) {
     for (String path : deleteCloudPicture.getPicturePaths()) {
-      this.s3Service.delete(path);
+      this.s3Service.deleteFile(path);
     }
   }
 
