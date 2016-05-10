@@ -78,7 +78,7 @@ public class CloudUploadServiceTest {
     this.service.uploadPicture(cloudPicture);
 
     Mockito.verify(this.s3Service, Mockito.times(cloudPicture.getDestElements().size()))
-        .uploadFile(Matchers.any(File.class), Matchers.anyString());
+        .uploadPublicFile(Matchers.any(File.class), Matchers.anyString());
 
   }
 }
