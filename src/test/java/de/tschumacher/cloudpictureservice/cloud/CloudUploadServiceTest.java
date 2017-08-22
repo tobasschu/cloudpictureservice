@@ -17,6 +17,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.junit.After;
 import org.junit.Before;
@@ -47,16 +49,16 @@ public class CloudUploadServiceTest {
   }
 
   @Test
-  public void convertToUrlTest() {
+  public void convertToUrlTest() throws MalformedURLException {
     final String key = "key";
-    final String url = "url";
+    final URL url = new URL("http://www.google.de");
     Mockito.when(this.s3Service.createPresignedUrl(Matchers.anyString(), Matchers.anyInt()))
         .thenReturn(url);
     Mockito.when(this.s3Service.fileExists(Matchers.anyString())).thenReturn(true);
 
     final String createTemporaryUrl = this.service.createTemporaryUrl(key, 20);
 
-    assertEquals(createTemporaryUrl, url);
+    assertEquals(createTemporaryUrl, url.toString());
 
     Mockito.verify(this.s3Service, Mockito.times(1)).createPresignedUrl(Matchers.anyString(),
         Matchers.anyInt());
@@ -67,7 +69,7 @@ public class CloudUploadServiceTest {
   public void uploadPicture() throws IllegalStateException, IOException {
     final File file = new File("src/test/resources/test.jpg");
 
-    CloudPicture cloudPicture = new CloudPicture(file);
+    final CloudPicture cloudPicture = new CloudPicture(file);
     cloudPicture.addPictureElement(PictureElement.newBuilder().withUploadPath("upload/original")
         .build());
     cloudPicture.addPictureElement(PictureElement.newBuilder().withUploadPath("upload/thumb")
