@@ -16,25 +16,25 @@ package de.tschumacher.cloudpictureservice.cloud;
 import java.io.File;
 import java.io.IOException;
 
-import net.coobird.thumbnailator.Thumbnails.Builder;
-import de.tschumacher.bucketservice.AmazonS3Service;
+import de.tschumacher.bucketservice.service.S3Service;
 import de.tschumacher.cloudpictureservice.picture.CloudPicture;
 import de.tschumacher.cloudpictureservice.picture.DeleteCloudPicture;
 import de.tschumacher.cloudpictureservice.picture.models.PictureElement;
 import de.tschumacher.utils.FilePathUtils;
 import de.tschumacher.utils.IdentifierUtils;
+import net.coobird.thumbnailator.Thumbnails.Builder;
 
 public class DefaultCloudUploadService implements CloudUploadService {
-  private final AmazonS3Service s3Service;
+  private final S3Service s3Service;
 
-  public DefaultCloudUploadService(final AmazonS3Service s3Service) {
+  public DefaultCloudUploadService(final S3Service s3Service) {
     this.s3Service = s3Service;
   }
 
   @Override
   public String createTemporaryUrl(final String key, int expirationMinutes) {
-    if (this.s3Service.fileExists(key))
-      return this.s3Service.createPresignedUrl(key, expirationMinutes).toString();
+    if (this.s3Service.informationService().fileExists(key))
+      return this.s3Service.downloadService().createPresignedUrl(key, expirationMinutes).toString();
     return null;
   }
 
@@ -48,18 +48,17 @@ public class DefaultCloudUploadService implements CloudUploadService {
 
   private void upload(File sourceFile, PictureElement element) throws IOException {
     final Builder<File> thumbBuilder = element.createThumbnailBuilder(sourceFile);
-    final File thumbFile =
-        new File(IdentifierUtils.createUniqueIdentifier(sourceFile.getName())
-            + FilePathUtils.getFileExtension(sourceFile.getName()));
+    final File thumbFile = new File(IdentifierUtils.createUniqueIdentifier(sourceFile.getName())
+        + FilePathUtils.getFileExtension(sourceFile.getName()));
     thumbBuilder.toFile(thumbFile);
-    this.s3Service.uploadPublicFile(thumbFile, element.getUploadPath());
+    this.s3Service.uploadService().uploadPublicFile(thumbFile, element.getUploadPath());
     thumbFile.delete();
   }
 
   @Override
   public void deletePicture(DeleteCloudPicture deleteCloudPicture) {
     for (final String path : deleteCloudPicture.getPicturePaths()) {
-      this.s3Service.deleteFile(path);
+      this.s3Service.modificationService().deleteFile(path);
     }
   }
 
