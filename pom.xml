@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.tschumacher</groupId>
 	<artifactId>cloudpictureservice</artifactId>
-	<version>0.0.6-SNAPSHOT</version>
+	<version>0.0.6</version>
 	<packaging>jar</packaging>
 
 	<name>cloudpictureservice</name>
@@ -31,7 +31,7 @@
 	<scm>
 		<connection>scm:git:git@github.com:tobasschu/cloudpictureservice.git</connection>
 		<url>https://github.com/tobasschu/cloudpictureservice.git</url>
-		<tag>master</tag>
+		<tag>cloudpictureservice-0.0.6</tag>
 	</scm>
 
 	<distributionManagement>
